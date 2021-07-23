@@ -48,13 +48,14 @@ body {
   margin: auto;
   padding: 50px;
   margin-top: 20px;
+  text-align: center;
 }
 
 #logInButton {
   background-color: #414242;
   color: white;
   border-radius: 8px;
-  width: 505px;
+  width: 100%;
   height: 53px; 
   margin: 5px;
 }
@@ -64,7 +65,18 @@ body {
   background: #FFFFFF;
   color: #414242;
   border-radius: 8px;
-  width: 505px;
+  width: 100%;
   height: 53px;
   margin: 5px;
+}
+
+#clearRobot {
+  cursor: pointer;;
+  text-decoration: underline;
+  float: left;
+}
+
+#addNewRobotButton {
+  background-color: #414242;
+  color: white;
 }
