@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,8 +10,8 @@ export const Login = () => {
     const [password, setPassword] = useState();
 
 
-    const token = 'f4265e66163a8dafe13eff42b011af83';
-    const [result, setResult] = useState();
+    // const token = 'f4265e66163a8dafe13eff42b011af83';
+    // const [result, setResult] = useState();
 
     // useEffect(() => {
     //     fetch('https://mondo-robot-art-api.herokuapp.com/auth/session/', {
@@ -23,14 +23,18 @@ export const Login = () => {
     // }, [])
 
     const handleSubmit = (e) => {
+        const token = "f4265e66163a8dafe13eff42b011af83";
         e.preventDefault();
         fetch('https://mondo-robot-art-api.herokuapp.com/auth/session', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`}
-            }).then(res => res.json()).then(json => setResult(json));
-            console.log(result)
-    }
+                Authorization: `Bearer ${token}`
+            }
+            })
+            .then(res => console.log(res.json()))
+            .then(json => console.log(json));
+        }
+
 
     const emailEntered = (e) => {
         setEmail(e.target.value);
@@ -43,14 +47,14 @@ export const Login = () => {
     return (
         <Container fluid className='text-center containerDiv'>
         <Form id='loginForm'>
-        <img src={logo} alt='Mondo Robot Logo' style={{padding: '30px 10px 30px 10px'}}/>
+        <img src={logo} alt='Mondo Robot Logo' style={{padding: '30px 10px 30px 10px', maxWidth: '75%'}}/>
         <Form.Group className="mb-3 formGroup" controlId="formBasicEmail" >
-            <Form.Label className='formLabel'>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email"  value={email} onChange={emailEntered} />
+            <Form.Label className='formLabel'>Email</Form.Label>
+            <Form.Control type="email"  className='formInputBox' placeholder="Enter email"  value={email} onChange={emailEntered} />
         </Form.Group>
         <Form.Group className="mb-3 formGroup" controlId="formBasicPassword">
         <Form.Label className='formLabel'>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" value={password} onChange={passwordEntered} />
+        <Form.Control type="password" className='formInputBox' placeholder="Password" value={password} onChange={passwordEntered} />
         </Form.Group>
         <div>
             <Button id="logInButton" type="submit" onClick={handleSubmit}>
