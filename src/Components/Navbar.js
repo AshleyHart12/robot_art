@@ -11,7 +11,7 @@ export const TopNavbar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link className="boldNavItem" href="userRobotCards">
+          <Nav.Link className="boldNavItem" href="robots">
             Robots
           </Nav.Link>
           <Nav.Link className="boldNavItem" href="results">

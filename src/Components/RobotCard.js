@@ -14,7 +14,7 @@ export const UserRobotCard = () => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
     method: "GET",
     headers: {
-      Authorization: `bearerAuth [${token}]`,
+      'Authorization': 'Bearer f4265e66163a8dafe13eff42b011af83'
     },
   })
     .then((res) => {

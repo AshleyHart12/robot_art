@@ -8,18 +8,26 @@ import logo from "../Assets/logo.png";
 export const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (e) => {
-    const token = "f4265e66163a8dafe13eff42b011af83";
-    e.preventDefault();
-    fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => console.log(res.json()))
-      .then((json) => console.log(json));
+    const form = e.currentTarget;
+    if(form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      setValidated(true);
+      const token = "f4265e66163a8dafe13eff42b011af83";
+      e.preventDefault();
+      fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => console.log(res.json()))
+        .then((json) => console.log(json));
+    }
   };
 
   const emailEntered = (e) => {
@@ -32,7 +40,7 @@ export const Login = () => {
 
   return (
     <Container fluid className="text-center containerDiv">
-      <Form id="loginForm">
+      <Form id="loginForm" noValidate validated={validated}>
         <img
           src={logo}
           alt="Mondo Robot Logo"
@@ -46,7 +54,11 @@ export const Login = () => {
             placeholder="Enter email"
             value={email}
             onChange={emailEntered}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please provide an email
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3 formGroup" controlId="formBasicPassword">
           <Form.Label className="formLabel">Password</Form.Label>
@@ -56,7 +68,11 @@ export const Login = () => {
             placeholder="Password"
             value={password}
             onChange={passwordEntered}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please enter a password
+          </Form.Control.Feedback>
         </Form.Group>
         <div>
           <Button id="logInButton" type="submit" onClick={handleSubmit}>

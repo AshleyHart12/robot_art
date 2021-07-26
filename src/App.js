@@ -11,37 +11,41 @@ function App() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
+    fetch("https://mondo-robot-art-api.herokuapp.com/auth/session/", {
       method: "GET",
-    }).then((res) => setUser(res.data));
+      headers: {
+        'Authorization': 'Bearer f4265e66163a8dafe13eff42b011af83'
+      }
+    }).then((res) => console.log(res.data));
   });
 
-  if (!user.name) {
-    return (
-      <Login />
-    )
-  }
-  else if (user.name === "admin") {
+  // if (!user.name) {
+  //   return (
+  //     <Login />
+  //   )
+  // }
+  // else if (user.name === "admin") {
     return (
       <Router>
         <TopNavbar />
         <Route exact path="/" component={Login}></Route>
         <Route exact path="/admin" component={AdminRobotCard}></Route>
+        <Route exact path="/robots" component={UserRobotCard}></Route>
         <Route exact path="/results" component={Results}></Route>
         <Route exact path="/register" component={Register}></Route>
       </Router>
     );
-  } else if (user.name === "user") {
-    return (
-      <Router>
-        <TopNavbar />
-        <Route exact path="/" component={Login}></Route>
-        <Route exact path="/userRobotCards" component={UserRobotCard}></Route>
-        <Route exact path="/results" component={Results}></Route>
-        <Route exact path="/register" component={Register}></Route>
-      </Router>
-    );
-  }  
+  // } else if (user.name === "user") {
+  //   return (
+      // <Router>
+      //   <TopNavbar />
+      //   <Route exact path="/" component={Login}></Route>
+      //   <Route exact path="/robots" component={UserRobotCard}></Route>
+      //   <Route exact path="/results" component={Results}></Route>
+      //   <Route exact path="/register" component={Register}></Route>
+      // </Router>
+    // );
+  // }  
 }
 
 export default App;
