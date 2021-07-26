@@ -1,35 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { UserRobotCard, AdminRobotCard } from "./Components/RobotCard";
 import { TopNavbar } from "./Components/Navbar";
 import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
 import { Results } from "./Components/Results";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 function App() {
-  // const [token, setToken] = useState();
+  const [user, setUser] = useState("");
 
-  // if(!token) {
-  //   console.log('no token');
-  //   return <Login setToken={token} />
-  // }
-  return (
-    // if(!user) { return '/'} else if (role === 'user) { return <Navbar> *with <UserRobotCard>} else { return <Navbar> *with <AdminRobotCard}
-    <Router>
-      <TopNavbar />
-      <Route exact path="/" component={Login}>
-      </Route>
-      <Route exact path="/userRobotCards" component={UserRobotCard}>
-      </Route>
-      <Route exact path="/adminRobotCards" component={AdminRobotCard}>
-      </Route>
-      <Route exact path="/results" component={Results}>
-      </Route>
-      <Route exact path="/register" component={Register}>
-      </Route>
-    </Router>
-  );
+  useEffect(() => {
+    fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
+      method: "GET",
+    }).then((res) => setUser(res.data));
+  });
+
+  if (!user.name) {
+    return (
+      <Login />
+    )
+  }
+  else if (user.name === "admin") {
+    return (
+      <Router>
+        <TopNavbar />
+        <Route exact path="/" component={Login}></Route>
+        <Route exact path="/admin" component={AdminRobotCard}></Route>
+        <Route exact path="/results" component={Results}></Route>
+        <Route exact path="/register" component={Register}></Route>
+      </Router>
+    );
+  } else if (user.name === "user") {
+    return (
+      <Router>
+        <TopNavbar />
+        <Route exact path="/" component={Login}></Route>
+        <Route exact path="/userRobotCards" component={UserRobotCard}></Route>
+        <Route exact path="/results" component={Results}></Route>
+        <Route exact path="/register" component={Register}></Route>
+      </Router>
+    );
+  }  
 }
 
 export default App;
