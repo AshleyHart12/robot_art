@@ -16,5 +16,7 @@ There is a large need to showcase those beings that may not be here in Earth wit
 
  [https://robot-art-v1.herokuapp.com/](https://robot-art-v1.herokuapp.com/)
  
+ ###### The API calls are not currently working, so the functionality of the app will not be what it is meant to be
+ 
  ##### For the best experience, please use Chrome while using the app. Safari does not support all included animations
 
