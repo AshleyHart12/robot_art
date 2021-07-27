@@ -17,12 +17,11 @@ export const Login = () => {
       e.stopPropagation();
     } else {
       setValidated(true);
-      const token = "f4265e66163a8dafe13eff42b011af83";
       e.preventDefault();
       fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          bearerAuth: ['f4265e66163a8dafe13eff42b011af83'],
         },
       })
         .then((res) => console.log(res.json()))

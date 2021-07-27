@@ -12,7 +12,7 @@ export const Results = () => {
 
   useEffect(() => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
-      method: "GET",
+      method: "GET"
     })
       .then((res) => res.json())
       .then((json) => setResults(json));
@@ -26,7 +26,7 @@ export const Results = () => {
           <Card.Title>Robot Name</Card.Title>
           <Card.Img
             variant="top"
-            class='robotImage'
+            className='robotImage'
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
           />
           <h5 style={{ padding: "10px" }}>

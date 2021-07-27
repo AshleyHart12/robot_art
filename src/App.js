@@ -12,10 +12,7 @@ function App() {
 
   useEffect(() => {
     fetch("https://mondo-robot-art-api.herokuapp.com/auth/session/", {
-      method: "GET",
-      headers: {
-        'Authorization': 'Bearer f4265e66163a8dafe13eff42b011af83'
-      }
+      method: "GET"
     }).then((res) => console.log(res.data));
   });
 
