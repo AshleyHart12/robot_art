@@ -1,4 +1,5 @@
-# Robot Art
+![Robot Art Logo](https://github.com/AshleyHart12/robot_art/blob/main/src/Assets/logo.png) 
+# Robot Art 
 
 There is a large need to showcase those beings that may not be here in Earth with us. Enter...Robot Art! Our mission is to provide awareness of these beings, provide support, and rally support for the day we might get to meet. 
 
@@ -11,5 +12,5 @@ There is a large need to showcase those beings that may not be here in Earth wit
 
 ##### Don't want to clone the repo? No problem! You can visit the URL here:
 
- [https://quiet-depths-16313.herokuapp.com/](https://quiet-depths-16313.herokuapp.com/)
+ [https://robot-art-v1.herokuapp.com/](https://robot-art-v1.herokuapp.com/)
 
