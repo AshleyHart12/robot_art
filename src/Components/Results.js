@@ -20,18 +20,20 @@ export const Results = () => {
   });
 
   return (
-    <Card style={{ width: "18rem" }} className="m-3">
-      <Card.Body className="text-center">
-        <Card.Title>Robot Name</Card.Title>
-        <Card.Img
-          variant="top"
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
-        />
-        <h5 style={{ padding: "10px" }}>
-          {totalVotes}/{totalVotes}
-        </h5>
-        <ProgressBar now={totalVotes} />
-      </Card.Body>
-    </Card>
+    <div id="robotCardDiv">
+      <Card style={{ width: "18rem" }} className="m-3">
+        <Card.Body className="text-center">
+          <Card.Title>Robot Name</Card.Title>
+          <Card.Img
+            variant="top"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
+          />
+          <h5 style={{ padding: "10px" }}>
+            {totalVotes}/{totalVotes}
+          </h5>
+          <ProgressBar now={totalVotes} />
+        </Card.Body>
+      </Card>
+    </div>
   );
 };

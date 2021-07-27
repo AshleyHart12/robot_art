@@ -9,24 +9,31 @@ export const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
+  const [validated, setValidated] = useState(false);
 
   const handleRegister = (e) => {
-    e.preventDefault();
-    fetch("https://mondo-robot-art-api.herokuapp.com/auth/register", {
-      method: "POST",
-      withCredentials: true,
-      headers: {
-        Authorization: "User",
-      },
-      body: JSON.stringify({
-        name: { name },
-        email: { email },
-        password: { password },
-      }),
-    })
-      .then((res) => res.text())
-      .then((data) => (data ? JSON.parse(data) : {}))
-      .catch((err) => console.log(err));
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopProgation();
+    } else {
+      setValidated(true);
+      e.preventDefault();
+      const token = "f4265e66163a8dafe13eff42b011af83";
+      fetch("https://mondo-robot-art-api.herokuapp.com/auth/register", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: { name },
+          email: { email },
+          password: { password },
+        }),
+      })
+        .then((res) => res.json())
+        .catch((err) => console.log(err));
+    }
   };
 
   const emailEntered = (e) => {
@@ -43,7 +50,7 @@ export const Register = () => {
 
   return (
     <Container fluid className="text-center containerDiv">
-      <Form id="loginForm">
+      <Form id="loginForm" noValidate validated={validated}>
         <img
           src={logo}
           alt="Mondo Robot Logo"
@@ -61,7 +68,11 @@ export const Register = () => {
             value={name}
             onChange={nameEntered}
             placeholder="Enter full name"
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please enter a name
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3 formGroup" controlId="formBasicEmail">
           <Form.Label className="formLabel">Email address</Form.Label>
@@ -71,7 +82,11 @@ export const Register = () => {
             placeholder="Enter email"
             value={email}
             onChange={emailEntered}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please enter an email
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3 formGroup" controlId="formBasicPassword">
           <Form.Label className="formLabel">Password</Form.Label>
@@ -81,7 +96,11 @@ export const Register = () => {
             placeholder="Password"
             value={password}
             onChange={passwordEntered}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Please enter a password
+          </Form.Control.Feedback>
         </Form.Group>
         <div>
           <Button id="logInButton" type="submit" href="/">
