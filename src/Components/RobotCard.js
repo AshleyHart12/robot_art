@@ -3,6 +3,9 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../App.css";
+import robot from "../Assets/robot.png";
+// import "aframe";
+// import "aframe-particle-system-component";
 
 // USER ROBOT CARD CONTAINING OPTION TO VOTE
 export const UserRobotCard = () => {
@@ -12,43 +15,50 @@ export const UserRobotCard = () => {
 
   useEffect(() => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
-    method: "GET",
-    headers: {
-      'Authorization': 'Bearer f4265e66163a8dafe13eff42b011af83'
-    },
-  })
-    .then((res) => {
-      setRobots(res.data);
-      console.log(robots);
+      method: "GET",
+      headers: {
+        Authorization: "Bearer f4265e66163a8dafe13eff42b011af83",
+      },
     })
-    .catch((error) => {
-      console.log(error);
-    });
-  })
+      .then((res) => {
+        setRobots(res.data);
+        console.log(robots);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
   const voteForRobotButton = () => {
     // GRAB ROBOT ID
-     fetch('https://mondo-robot-art-api.herokuapp.com/votes/', {
-        method: 'POST',
-        body: {
-           robot: ''
-        },
+    fetch("https://mondo-robot-art-api.herokuapp.com/votes/", {
+      method: "POST",
+      body: {
+        robot: "",
+      },
     })
-    .then((res) => res.json())
-    .then(res => console.log(res.data))
-    .catch((err) => console.log(err));
+      .then((res) => res.json())
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
+
+  // const robot_image = {
+  //   shader: "flat",
+  //   src: "../Assets/robot.png",
+  // };
 
   return (
     <div id="robotCardDiv">
       <Card style={{ width: "18rem" }} className="m-3">
         <Card.Body className="text-center">
           <Card.Title>Card Title</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
-          />
-          <Button variant="primary" className="m-3" id="voteForRobotButton" onClick={voteForRobotButton}>
+          <Card.Img variant="top" class='robotImage' src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1' />
+          <Button
+            variant="primary"
+            className="m-3"
+            id="voteForRobotButton"
+            onClick={voteForRobotButton}
+          >
             Vote
           </Button>
         </Card.Body>
@@ -59,7 +69,26 @@ export const UserRobotCard = () => {
           <Card.Title>Card Title</Card.Title>
           <Card.Img
             variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
+            class='robotImage' src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1'
+          />
+          {/* <a-scene
+            embedded
+            style={{ height: "20rem" }}
+            fog="type: linear; color: #AAA"
+          >
+            <a-sky src={robot}></a-sky>
+          </a-scene> */}
+          <Button variant="primary" className="m-3">
+            Vote
+          </Button>
+        </Card.Body>
+      </Card>
+      <Card style={{ width: "18rem" }} className="m-3">
+        <Card.Body className="text-center">
+          <Card.Title>Card Title</Card.Title>
+          <Card.Img
+            variant="top"
+            class='robotImage' src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1'
           />
           <Button variant="primary" className="m-3">
             Vote
@@ -71,7 +100,7 @@ export const UserRobotCard = () => {
           <Card.Title>Card Title</Card.Title>
           <Card.Img
             variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
+            class='robotImage' src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1'
           />
           <Button variant="primary" className="m-3">
             Vote
@@ -83,19 +112,7 @@ export const UserRobotCard = () => {
           <Card.Title>Card Title</Card.Title>
           <Card.Img
             variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
-          />
-          <Button variant="primary" className="m-3">
-            Vote
-          </Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: "18rem" }} className="m-3">
-        <Card.Body className="text-center">
-          <Card.Title>Card Title</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
+            class='robotImage' src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1'
           />
           <Button variant="primary" className="m-3">
             Vote
@@ -119,9 +136,9 @@ export const AdminRobotCard = () => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
       method: "GET",
       headers: {
-        "Access-Control-Allow-Origin" : "*", 
-        "Access-Control-Allow-Credentials" : true,
-        "X-Client-Auth-Token": 'f4265e66163a8dafe13eff42b011af83'
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        "X-Client-Auth-Token": "f4265e66163a8dafe13eff42b011af83",
       },
     })
       .then((res) => res.json())
@@ -129,15 +146,15 @@ export const AdminRobotCard = () => {
         setRobots(res.data);
         console.log(robots);
       });
-  },[robots]);
+  }, [robots]);
 
   // ADD A NEW ROBOT TO DATABASE
   const addNewRobot = () => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
       method: "POST",
       body: {
-        name: {robotName} ,
-        image: {image} ,
+        name: { robotName },
+        image: { image },
       },
     })
       .then((res) => res.json())
@@ -150,7 +167,7 @@ export const AdminRobotCard = () => {
     })
       .then((res) => res.json())
       .catch((err) => console.log(err));
-  }
+  };
 
   const robotNameEntered = (e) => {
     setRobotName(e.target.value);
@@ -191,6 +208,7 @@ export const AdminRobotCard = () => {
           <Card.Title>Card Title</Card.Title>
           <Card.Img
             variant="top"
+            class='robotImage'
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
           />
           <Button variant="primary" className="m-3" id="editRobotButton">

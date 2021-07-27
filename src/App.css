@@ -153,6 +153,34 @@ body {
   background-color: #414242;
   color: white;
   border: none;
+  animation-name: slidein;
+  animation-duration: 2s;
+}
+
+.robotImage {
+  animation-name: imageSlideIn;
+  animation-duration: 2s;
+  width: 11rem;
+}
+
+@keyframes imageSlideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
 }
 
 #editRobotButton {
