@@ -12,7 +12,7 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     const form = e.currentTarget;
-    if(form.checkValidity() === false) {
+    if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
     } else {
@@ -21,7 +21,7 @@ export const Login = () => {
       fetch("https://mondo-robot-art-api.herokuapp.com/auth/session", {
         method: "GET",
         headers: {
-          bearerAuth: ['f4265e66163a8dafe13eff42b011af83'],
+          bearerAuth: ["f4265e66163a8dafe13eff42b011af83"],
         },
       })
         .then((res) => console.log(res.json()))

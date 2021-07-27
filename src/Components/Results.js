@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-// import Row from "react-bootstrap/Row";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import "../App.css";
 import { ProgressBar } from "react-bootstrap";
 
 export const Results = () => {
-  const [results, setResults] = useState();
-  const [totalVotes, setTotalVotes] = useState([0]);
+  const [votes, setVotes] = useState(5);
+  const [totalVotes, setTotalVotes] = useState(10);
 
   useEffect(() => {
-    fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
-      method: "GET"
+    fetch("https://mondo-robot-art-api.herokuapp.com/robots/{id}/votes", {
+      method: "GET",
     })
       .then((res) => res.json())
-      .then((json) => setResults(json));
-    console.log(results);
+      .then((data) => setVotes(data));
+
+    fetch("https://mondo-robot-art-api.herokuapp.com/users", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setTotalVotes(data));
   });
 
   return (
@@ -26,13 +28,13 @@ export const Results = () => {
           <Card.Title>Robot Name</Card.Title>
           <Card.Img
             variant="top"
-            className='robotImage'
+            className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g0lBQ9PENwUwiTLx6oKGgwHaGL%26pid%3DApi&f=1"
           />
           <h5 style={{ padding: "10px" }}>
-            {totalVotes}/{totalVotes}
+            {votes}/{totalVotes}
           </h5>
-          <ProgressBar now={totalVotes} />
+          <ProgressBar now={votes} />
         </Card.Body>
       </Card>
     </div>

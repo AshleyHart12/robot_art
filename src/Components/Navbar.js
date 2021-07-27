@@ -18,7 +18,9 @@ export const TopNavbar = () => {
             Results
           </Nav.Link>
           <div className="rightSideNav">
-            <Nav.Link className="smallNavItem" href="admin">Admin</Nav.Link>
+            <Nav.Link className="smallNavItem" href="admin">
+              Admin
+            </Nav.Link>
             <Nav.Link className="smallNavItem " href="/">
               Logout
             </Nav.Link>
