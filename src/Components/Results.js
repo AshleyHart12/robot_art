@@ -7,13 +7,16 @@ export const Results = () => {
   const [votes, setVotes] = useState(5);
   const [totalVotes, setTotalVotes] = useState(10);
 
+
   useEffect(() => {
+      // GRAB NUMBER OF VOTES BY ROBOT
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/{id}/votes", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => setVotes(data));
 
+      // GRAB TOTAL NUMBER OF USERS WITH AN ACCOUNT IN THE SYSTEM
     fetch("https://mondo-robot-art-api.herokuapp.com/users", {
       method: "GET",
     })

@@ -9,6 +9,7 @@ export const UserRobotCard = () => {
   const [robots, setRobots] = useState();
   const [vote, setVote] = useState();
 
+  // GRAB THE LIST OF CURRENT ROBOTS 
   useEffect(() => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
       method: "GET",
@@ -22,6 +23,7 @@ export const UserRobotCard = () => {
       });
   });
 
+  // ALLOW A USER TO VOTE FOR A ROBOT
   const voteForRobotButton = () => {
     // GRAB ROBOT ID
     fetch("https://mondo-robot-art-api.herokuapp.com/votes/", {
@@ -144,6 +146,7 @@ export const AdminRobotCard = () => {
       .catch((err) => console.log(err));
   };
 
+  // DELETE A ROBOT
   const deleteRobot = () => {
     fetch("https://mondo-robot-art-api.herokuapp.com/robots/", {
       method: "DELETE",
@@ -180,7 +183,7 @@ export const AdminRobotCard = () => {
           <Button variant="primary" className="m-3" id="editRobotButton">
             Edit
           </Button>
-          <Button variant="primary" className="m-3" id="deleteRobotButton">
+          <Button variant="primary" className="m-3" id="deleteRobotButton" onClick={deleteRobot}>
             Delete
           </Button>
         </Card.Body>

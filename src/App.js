@@ -10,11 +10,14 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState("");
 
+  // GRAB THE CURRENT USER THAT IS LOGGED IN
   useEffect(() => {
     fetch("https://mondo-robot-art-api.herokuapp.com/auth/session/", {
       method: "GET"
     }).then((res) => console.log(res.data));
   });
+
+  // COMMENTED OUT CODE BELOW IS TO CHECK IF A USER HAS LOGGED IN. IF THEY ARE LOGGED IN AS ADMIN, SHOW ALL TABS, IF THEY ARE REGULAR USER, DO NOT SHOW THE ADMIN TAB
 
   // if (!user.name) {
   //   return (
