@@ -44,7 +44,7 @@ export const UserRobotCard = () => {
           <Card.Title>Card Title</Card.Title>
           <Card.Img
             variant="top"
-            class="robotImage"
+            className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1"
           />
           <Button
@@ -66,7 +66,7 @@ export const UserRobotCard = () => {
             className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1"
           />
-          <Button variant="primary" className="m-3">
+          <Button variant="primary" className="m-3" id="voteForRobotButton">
             Vote
           </Button>
         </Card.Body>
@@ -79,7 +79,7 @@ export const UserRobotCard = () => {
             className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1"
           />
-          <Button variant="primary" className="m-3">
+          <Button variant="primary" className="m-3" id="voteForRobotButton">
             Vote
           </Button>
         </Card.Body>
@@ -92,12 +92,12 @@ export const UserRobotCard = () => {
             className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1"
           />
-          <Button variant="primary" className="m-3">
+          <Button variant="primary" className="m-3" id="voteForRobotButton">
             Vote
           </Button>
         </Card.Body>
       </Card>
-      <Card style={{ width: "18rem" }} className="m-3">
+      <Card style={{ width: "18rem" }} className="m-3" >
         <Card.Body className="text-center">
           <Card.Title>Card Title</Card.Title>
           <Card.Img
@@ -105,7 +105,7 @@ export const UserRobotCard = () => {
             className="robotImage"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-robotrobotprogrammableautomatonelectronics-17015283691003f4jk.png&f=1&nofb=1"
           />
-          <Button variant="primary" className="m-3">
+          <Button variant="primary" className="m-3" id="voteForRobotButton">
             Vote
           </Button>
         </Card.Body>
